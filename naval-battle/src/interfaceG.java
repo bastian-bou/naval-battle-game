@@ -74,8 +74,8 @@ public class interfaceG extends JFrame implements ActionListener {
 			PlateauxJ2.add(Grille2[i]);
 			Grille2[i].setPreferredSize(Taille);
 		}
+
 		setVisible(true);
-	
 		
 		
 		
