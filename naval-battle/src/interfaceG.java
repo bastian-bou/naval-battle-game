@@ -36,6 +36,7 @@ public class interfaceG extends JFrame implements ActionListener {
 		Grille2 = new JButton[100];
 		Taille = new Dimension(1,1);
 		
+		//création de la zone de jeux
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(Plateaux, BorderLayout.CENTER);
 		
