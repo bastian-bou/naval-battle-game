@@ -4,12 +4,15 @@ public abstract class bateau {
 	protected String nom;		//type du bateau
 	protected int value;		//taille du bateau
 	protected int nbTouche;	//nombre de touche sur le bateau
+	protected int tab[];
+	protected int i;
 	
 	//constructeur 
 	public bateau(String n, int val){
 		nom = n;
 		value = val;
 		nbTouche = 0;
+		i = 0;
 	}
 	
 	//retourne le nom du bateau (type)
@@ -32,5 +35,29 @@ public abstract class bateau {
 		if (nbTouche == value) return true;
 		else return false;
 	}
+	
+	public void SetPosition(int pos){
+		/*
+		 * Affect une valeur liée à la postion d'un bouton au bateau par un tableau
+		 */
+		if(i < value)
+		{
+			tab[i] = pos;
+			i++;
+		}
+	}
+	
+	public boolean testPosition(int pos){
+		/*
+		 * Test si la position correspond au bateau
+		 * si OUI, retourne True
+		 * sinon retourne False
+		 */
+		for(int j=0; j < value; j++)
+			if (pos == tab[j]) return true;
+		return false;
+	}
+	
+	
 	
 }

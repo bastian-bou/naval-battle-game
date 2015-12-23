@@ -166,7 +166,7 @@ public class interfaceG extends JFrame implements ActionListener {
 
 	public static void main(String[] args){
 		
-		JFrame MonInterface =new interfaceG();
+		new interfaceG();
 		
 	}
 	
