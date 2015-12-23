@@ -16,15 +16,20 @@ public class interfaceG extends JFrame implements ActionListener {
 	private JPanel InterfaceJoueur;
 	private JPanel InterfaceJ1;
 	private JPanel InterfaceJ2;
-	private Dimension Taille;
-
-
+	private JLabel NomJ1;
+	private JLabel NomJ2;
+	private JLabel BateauxRestantJ1;
+	private JLabel BateauxRestantJ2;
+	
+	
+	
+	
 	//constructeur interface graphique
 	public interfaceG()
 	{
 		super("Battleship");
 		
-		setSize(1200, 1000);
+		setSize(1200, 400);
 		this.setLocationRelativeTo(null);
 		Plateaux = new JPanel();
 		PlateauxJ1 = new JPanel();
@@ -34,9 +39,11 @@ public class interfaceG extends JFrame implements ActionListener {
 		InterfaceJ2 = new JPanel();
 		Grille1 = new JButton[100];
 		Grille2 = new JButton[100];
-		Taille = new Dimension(1,1);
-		
-		//création de la zone de jeux
+		NomJ1 = new JLabel("J1");
+		NomJ2 = new JLabel("J2");
+		BateauxRestantJ1 =new JLabel("Bateaux Restant: ");
+		BateauxRestantJ2 =new JLabel("Bateaux Restant: ");
+		//création de la zone de jeux avec les plateaux des joueurs
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(Plateaux, BorderLayout.CENTER);
 		
@@ -46,10 +53,18 @@ public class interfaceG extends JFrame implements ActionListener {
 		PlateauxJ1.setLayout(new GridLayout(10, 10));
 		PlateauxJ2.setLayout(new GridLayout(10, 10));
 		
+		
+		//Bar horizontale des joueurs
 		getContentPane().add(InterfaceJoueur, BorderLayout.NORTH);
 		InterfaceJoueur.setLayout(new GridLayout(1, 2, 100, 50));
-		
-		
+		InterfaceJoueur.add(InterfaceJ1);
+		InterfaceJoueur.add(InterfaceJ2);
+		InterfaceJ1.setLayout(new GridLayout(3, 1, 0, 5));
+		InterfaceJ2.setLayout(new GridLayout(3, 1, 0, 5));
+		InterfaceJ1.add(NomJ1);
+		InterfaceJ1.add(BateauxRestantJ1);
+		InterfaceJ2.add(NomJ2);
+		InterfaceJ2.add(BateauxRestantJ2);
 
 		
 		
@@ -64,7 +79,8 @@ public class interfaceG extends JFrame implements ActionListener {
 			Grille1[i].addActionListener(this);
 			//Grille1[i].setPreferredSize(new Dimension(1,1));
 			PlateauxJ1.add(Grille1[i]);
-			Grille1[i].setPreferredSize(Taille);
+			//Grille1[i].setPreferredSize(Taille);
+			Grille1[i].setBounds(1, 1, 10, 10);
 		}
 		for(int i = 0; i <= 99; i++)
 		{
@@ -72,7 +88,7 @@ public class interfaceG extends JFrame implements ActionListener {
 			Grille2[i].setActionCommand("Action"+i);
 			Grille2[i].addActionListener(this);
 			PlateauxJ2.add(Grille2[i]);
-			Grille2[i].setPreferredSize(Taille);
+			//Grille2[i].setPreferredSize(Taille);
 		}
 
 		setVisible(true);
