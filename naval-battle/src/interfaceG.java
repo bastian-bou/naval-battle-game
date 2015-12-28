@@ -71,8 +71,11 @@ public class interfaceG extends JFrame implements ActionListener {
 		//Construction des éléments pour les boutons système du jeu
 		BoutonStart = new JButton();
 		BoutonStart.setText("Start");
+		BoutonStart.addActionListener(this);
 		BoutonStopRestart = new JButton();
 		BoutonStopRestart.setText("Stop & Restart");
+		BoutonStopRestart.setName("StopRestart");
+		BoutonStopRestart.addActionListener(this);
 		Systeme = new JPanel();
 		ResultatScore = new JLabel("Résultat de la partie: ");
 		ValeurResultatScore = new JLabel("Victoire Joueur 1");
@@ -118,7 +121,8 @@ public class interfaceG extends JFrame implements ActionListener {
 		
 		for(int i = 0; i <= 99; i++)
 		{
-			Grille1[i] = new JButton(""+(i+1));
+			Grille1[i] = new JButton();
+			Grille1[i].setName(""+(i+1));
 			Grille1[i].setActionCommand("Action"+i);
 			Grille1[i].addActionListener(this);
 			PlateauxJ1.add(Grille1[i]);
@@ -127,7 +131,8 @@ public class interfaceG extends JFrame implements ActionListener {
 		
 		for(int i = 0; i <= 99; i++)
 		{
-			Grille2[i] = new JButton(""+(i+1));
+			Grille2[i] = new JButton();
+			Grille2[i].setName(""+((i+101)));
 			Grille2[i].setActionCommand("Action"+i);
 			Grille2[i].addActionListener(this);
 			PlateauxJ2.add(Grille2[i]);
@@ -159,8 +164,78 @@ public class interfaceG extends JFrame implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		String RecuperationBouton = ((JButton) e.getSource()).getName() ;
+		
+		if(RecuperationBouton==BoutonStopRestart.getName())
+		{
+			ValeurResultatScore.setText("Le bouton test est appuyé");
+			for (int i=0; i<=99; i++)
+			{
+				Grille1[i].setEnabled(true);
+			}
+			
+			for (int i=0; i<=99; i++)
+			{
+				Grille2[i].setEnabled(true);
+			}
+			
+		}
+		else
+		{
+			
+			
+			for (int i=0; i<=99; i++)
+			{
+				Grille1[i].setEnabled(false);
+			}
+			
+			for (int i=0; i<=99; i++)
+			{
+				Grille2[i].setEnabled(false);
+			}
+			
+			int NomBoutonAppuyer = Integer.parseInt(RecuperationBouton); 
+			NomBoutonAppuyer = (NomBoutonAppuyer-1);
+			ValeurResultatScore.setText("Le bouton "+NomBoutonAppuyer+" est appuyé");
+			
+			
+			
+			
+			if(NomBoutonAppuyer<=199 && NomBoutonAppuyer>=0)
+			{
+				if(NomBoutonAppuyer<=99 && NomBoutonAppuyer>=0)
+				{
+					Grille1[NomBoutonAppuyer].setEnabled(true);
+
+					Grille1[(NomBoutonAppuyer)+1].setEnabled(true);
+					Grille1[(NomBoutonAppuyer)-1].setEnabled(true);
+					Grille1[(NomBoutonAppuyer)-10].setEnabled(true);
+					Grille1[(NomBoutonAppuyer)+10].setEnabled(true);
+				}
+					
+				if(NomBoutonAppuyer<=199 && NomBoutonAppuyer>=100){
+					
+					Grille2[NomBoutonAppuyer-100].setEnabled(true);
+					Grille2[(NomBoutonAppuyer-100)+1].setEnabled(true);
+					Grille2[(NomBoutonAppuyer-100)-1].setEnabled(true);
+					Grille2[(NomBoutonAppuyer-100)-10].setEnabled(true);
+					Grille2[(NomBoutonAppuyer-100)+10].setEnabled(true);
+				}
+				
+				
+			}
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+			
 		
 	}
 
