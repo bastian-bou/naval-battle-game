@@ -167,7 +167,6 @@ public class interfaceG extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String RecuperationBouton = ((JButton) e.getSource()).getName() ;
-		
 		if(RecuperationBouton==BoutonStopRestart.getName())
 		{
 			ValeurResultatScore.setText("Le bouton test est appuyé");
@@ -207,21 +206,51 @@ public class interfaceG extends JFrame implements ActionListener {
 			{
 				if(NomBoutonAppuyer<=99 && NomBoutonAppuyer>=0)
 				{
+		
 					Grille1[NomBoutonAppuyer].setEnabled(true);
-
-					Grille1[(NomBoutonAppuyer)+1].setEnabled(true);
-					Grille1[(NomBoutonAppuyer)-1].setEnabled(true);
+					
+					if((NomBoutonAppuyer-10)>=0)
 					Grille1[(NomBoutonAppuyer)-10].setEnabled(true);
+					//else
+					//Grille1[(NomBoutonAppuyer)-10].setEnabled(false);
+					
+					if((NomBoutonAppuyer+10)<=99)
 					Grille1[(NomBoutonAppuyer)+10].setEnabled(true);
+					//else
+					//Grille1[(NomBoutonAppuyer)+10].setEnabled(false);
+					
+					if(((NomBoutonAppuyer+1)/10)-(NomBoutonAppuyer/10)==0)
+					Grille1[(NomBoutonAppuyer)+1].setEnabled(true);
+					//else
+					//Grille1[(NomBoutonAppuyer)+1].setEnabled(false);	
+
+					if((NomBoutonAppuyer/10)-((NomBoutonAppuyer-1)/10)==0 && NomBoutonAppuyer != 0)
+					Grille1[(NomBoutonAppuyer)-1].setEnabled(true);
+					//else
+					//Grille1[(NomBoutonAppuyer)-1].setEnabled(false);
 				}
 					
 				if(NomBoutonAppuyer<=199 && NomBoutonAppuyer>=100){
 					
 					Grille2[NomBoutonAppuyer-100].setEnabled(true);
-					Grille2[(NomBoutonAppuyer-100)+1].setEnabled(true);
-					Grille2[(NomBoutonAppuyer-100)-1].setEnabled(true);
+					
+					if(((NomBoutonAppuyer-100)-10)>=0)
 					Grille2[(NomBoutonAppuyer-100)-10].setEnabled(true);
+;
+					
+					if((NomBoutonAppuyer-90)<=99)
 					Grille2[(NomBoutonAppuyer-100)+10].setEnabled(true);
+
+					
+					if(((NomBoutonAppuyer-99)/10)-((NomBoutonAppuyer-100)/10)==0)
+					Grille2[(NomBoutonAppuyer-100)+1].setEnabled(true);
+	
+
+					if(((NomBoutonAppuyer-100)/10)-((NomBoutonAppuyer-101)/10)==0 && NomBoutonAppuyer != 100)
+					Grille2[(NomBoutonAppuyer-100)-1].setEnabled(true);
+
+					
+			
 				}
 				
 				
