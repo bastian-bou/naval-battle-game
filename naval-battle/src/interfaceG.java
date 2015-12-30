@@ -196,7 +196,7 @@ public class interfaceG extends JFrame implements ActionListener {
 				Grille2[i].setEnabled(false);
 			}
 			
-			int NomBoutonAppuyer = Integer.parseInt(RecuperationBouton); 
+			int NomBoutonAppuyer = Integer.parseInt(RecuperationBouton);
 			NomBoutonAppuyer = (NomBoutonAppuyer-1);
 			ValeurResultatScore.setText("Le bouton "+NomBoutonAppuyer+" est appuyé");
 			
