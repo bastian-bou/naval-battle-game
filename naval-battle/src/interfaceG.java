@@ -3,8 +3,10 @@ import java.awt.* ;
 import java.awt.event.*;
 
 public class interfaceG extends JFrame implements ActionListener {
-
-
+	
+	private int placementbateaux;
+	
+//test = new bateau(test,2);
 	//Déclaration des attributs pour l'interface joueur
 	private JPanel InterfaceJoueur;
 	private JPanel InterfaceJ1;
@@ -36,7 +38,13 @@ public class interfaceG extends JFrame implements ActionListener {
 	private JLabel Vide3;
 	private JLabel Vide4;
 	
-	private boolean Flag; //separation du placemnt des bateaux au jeu
+	private boolean Flag; //separation du placement des bateaux au jeu
+	
+//	private Two Torpilleur;
+//	private Three Sousmarin;
+//	private Three ContreTorpilleur;
+//	private Four Croiseur;
+//	private Five PorteAvion;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -46,7 +54,11 @@ public class interfaceG extends JFrame implements ActionListener {
 	{
 		//Appel du contructeur JFrame
 		super("Battleship");
-		
+//		Torpilleur= new Two("Torpilleur");
+//		Sousmarin= new Three("Sous-Marin");
+//		ContreTorpilleur= new Three("Contre-Torpilleur");
+//		Croiseur= new Four("Croiseur");
+//		PorteAvion= new Five("Porte-Avion");
 		Flag = false;
 		
 		//Contruction des éléments pour l'interface joueur
@@ -124,7 +136,7 @@ public class interfaceG extends JFrame implements ActionListener {
 		{
 			Grille1[i] = new JButton();
 			Grille1[i].setName(""+(i+1));
-			Grille1[i].setActionCommand("Action"+i);
+			Grille1[i].setActionCommand("Grille1"+i);
 			Grille1[i].addActionListener(this);
 			PlateauxJ1.add(Grille1[i]);
 
@@ -134,7 +146,7 @@ public class interfaceG extends JFrame implements ActionListener {
 		{
 			Grille2[i] = new JButton();
 			Grille2[i].setName(""+((i+101)));
-			Grille2[i].setActionCommand("Action"+i);
+			Grille2[i].setActionCommand("Grille2"+i);
 			Grille2[i].addActionListener(this);
 			PlateauxJ2.add(Grille2[i]);
 
@@ -156,21 +168,29 @@ public class interfaceG extends JFrame implements ActionListener {
 		Systeme.add(Vide4);
 		
 		
-		
-		
-		
-		
-		
 
+		
+		
+		
+		
+		
+		
 	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String RecuperationBouton = ((JButton) e.getSource()).getName() ;
-		if(RecuperationBouton==BoutonStopRestart.getName())
+		String RecuperationActionBouton = ((JButton) e.getSource()).getActionCommand() ;
+		
+		
+		//teste si le bouton appuyer est BoutonStopRestart
+		if(RecuperationActionBouton==BoutonStopRestart.getActionCommand())
 		{
-			ValeurResultatScore.setText("Le bouton test est appuyé");
+
+			
+			Flag = true;
+			ValeurResultatScore.setText("Le bouton Stop  est appuyé");
+			//remet toute les cases des tableaux a enable
 			for (int i=0; i<=99; i++)
 			{
 				Grille1[i].setEnabled(true);
@@ -184,90 +204,81 @@ public class interfaceG extends JFrame implements ActionListener {
 		}
 		else
 		{
-			
-			Flag = true;
-			for (int i=0; i<=99; i++)
-			{
-				Grille1[i].setEnabled(false);
-			}
-			
-			for (int i=0; i<=99; i++)
-			{
-				Grille2[i].setEnabled(false);
-			}
-			
 			int NomBoutonAppuyer = Integer.parseInt(RecuperationBouton);
 			NomBoutonAppuyer = (NomBoutonAppuyer-1);
-			ValeurResultatScore.setText("Le bouton "+NomBoutonAppuyer+" est appuyé");
 			
-			
-			
-			
+			//teste si le bouton appuyer est une case
 			if(NomBoutonAppuyer<=199 && NomBoutonAppuyer>=0)
 			{
+
+				//test si le bouton appuyer fait partie du premier tableau
 				if(NomBoutonAppuyer<=99 && NomBoutonAppuyer>=0)
 				{
-		
+					for (int i=0; i<=99; i++)
+					{
+						Grille1[i].setEnabled(false);
+					}
+					
+					for (int i=0; i<=99; i++)
+					{
+						Grille2[i].setEnabled(false);
+					}
+					//gestion des debordement de tableaux
 					Grille1[NomBoutonAppuyer].setEnabled(true);
 					
 					if((NomBoutonAppuyer-10)>=0)
 					Grille1[(NomBoutonAppuyer)-10].setEnabled(true);
-					//else
-					//Grille1[(NomBoutonAppuyer)-10].setEnabled(false);
+
 					
 					if((NomBoutonAppuyer+10)<=99)
 					Grille1[(NomBoutonAppuyer)+10].setEnabled(true);
-					//else
-					//Grille1[(NomBoutonAppuyer)+10].setEnabled(false);
+
 					
 					if(((NomBoutonAppuyer+1)/10)-(NomBoutonAppuyer/10)==0)
 					Grille1[(NomBoutonAppuyer)+1].setEnabled(true);
-					//else
-					//Grille1[(NomBoutonAppuyer)+1].setEnabled(false);	
+
 
 					if((NomBoutonAppuyer/10)-((NomBoutonAppuyer-1)/10)==0 && NomBoutonAppuyer != 0)
 					Grille1[(NomBoutonAppuyer)-1].setEnabled(true);
-					//else
-					//Grille1[(NomBoutonAppuyer)-1].setEnabled(false);
 				}
-					
-				if(NomBoutonAppuyer<=199 && NomBoutonAppuyer>=100){
-					
-					Grille2[NomBoutonAppuyer-100].setEnabled(true);
-					
-					if(((NomBoutonAppuyer-100)-10)>=0)
-					Grille2[(NomBoutonAppuyer-100)-10].setEnabled(true);
-;
-					
-					if((NomBoutonAppuyer-90)<=99)
-					Grille2[(NomBoutonAppuyer-100)+10].setEnabled(true);
+				else
+				{
+					//test si le bouton appuyer fait partie du deuxieme tableau
+					if(NomBoutonAppuyer<=199 && NomBoutonAppuyer>=100){
+						
+						for (int i=0; i<=99; i++)
+						{
+							Grille1[i].setEnabled(false);
+						}
+						
+						for (int i=0; i<=99; i++)
+						{
+							Grille2[i].setEnabled(false);
+						}
+						//gestion des debordement de tableaux
+						Grille2[NomBoutonAppuyer-100].setEnabled(true);
+						
+						if(((NomBoutonAppuyer-100)-10)>=0)
+						Grille2[(NomBoutonAppuyer-100)-10].setEnabled(true);
+						
+						if((NomBoutonAppuyer-90)<=99)
+						Grille2[(NomBoutonAppuyer-100)+10].setEnabled(true);
 
-					
-					if(((NomBoutonAppuyer-99)/10)-((NomBoutonAppuyer-100)/10)==0)
-					Grille2[(NomBoutonAppuyer-100)+1].setEnabled(true);
-	
+						
+						if(((NomBoutonAppuyer-99)/10)-((NomBoutonAppuyer-100)/10)==0)
+						Grille2[(NomBoutonAppuyer-100)+1].setEnabled(true);
+		
 
-					if(((NomBoutonAppuyer-100)/10)-((NomBoutonAppuyer-101)/10)==0 && NomBoutonAppuyer != 100)
-					Grille2[(NomBoutonAppuyer-100)-1].setEnabled(true);
-
-					
-			
+						if(((NomBoutonAppuyer-100)/10)-((NomBoutonAppuyer-101)/10)==0 && NomBoutonAppuyer != 100)
+						Grille2[(NomBoutonAppuyer-100)-1].setEnabled(true);
+					}
 				}
-				
-				
 			}
-			
-			
-			
 		}
-		
-		
-		
-		
-		
-			
-		
 	}
+		
+		
+
 
 	public static void main(String[] args){
 		

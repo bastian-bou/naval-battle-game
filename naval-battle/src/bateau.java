@@ -22,6 +22,7 @@ public abstract class bateau {
 	
 	//retourne la taille du bateau
 	public int getValue(){
+		value=2;
 		return value;
 	}
 	
