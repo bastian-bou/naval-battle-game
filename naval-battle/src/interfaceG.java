@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class interfaceG extends JFrame implements ActionListener {
 	
-	private int placementbateaux;
+	private int Option;
 	
 //test = new bateau(test,2);
 	//Déclaration des attributs pour l'interface joueur
@@ -40,26 +40,43 @@ public class interfaceG extends JFrame implements ActionListener {
 	
 	private boolean Flag; //separation du placement des bateaux au jeu
 	
-//	private Two Torpilleur;
-//	private Three Sousmarin;
-//	private Three ContreTorpilleur;
-//	private Four Croiseur;
-//	private Five PorteAvion;
+	private Two Torpilleur;
+	private Three Sousmarin;
+	private Three ContreTorpilleur;
+	private Four Croiseur;
+	private Five PorteAvion;
+	
+	private Two Torpilleur1;
+	private Three Sousmarin1;
+	private Three ContreTorpilleur1;
+	private Four Croiseur1;
+	private Five PorteAvion1;
 	
 	private static final long serialVersionUID = 1L;
+	
+	private int Cmpt;
 
 	
 	//constructeur interface graphique
-	public interfaceG()
+	public interfaceG(int O)
 	{
 		//Appel du contructeur JFrame
 		super("Battleship");
-//		Torpilleur= new Two("Torpilleur");
-//		Sousmarin= new Three("Sous-Marin");
-//		ContreTorpilleur= new Three("Contre-Torpilleur");
-//		Croiseur= new Four("Croiseur");
-//		PorteAvion= new Five("Porte-Avion");
+		Torpilleur= new Two("Torpilleur");
+		Sousmarin= new Three("Sous-Marin");
+		ContreTorpilleur= new Three("Contre-Torpilleur");
+		Croiseur= new Four("Croiseur");
+		PorteAvion= new Five("Porte-Avion");
+		
+		Torpilleur1= new Two("Torpilleur");
+		Sousmarin1= new Three("Sous-Marin");
+		ContreTorpilleur1= new Three("Contre-Torpilleur");
+		Croiseur1= new Four("Croiseur");
+		PorteAvion1= new Five("Porte-Avion");
+		
 		Flag = false;
+		Option = O;
+		Cmpt = 0;
 		
 		//Contruction des éléments pour l'interface joueur
 		InterfaceJoueur = new JPanel();
@@ -139,6 +156,8 @@ public class interfaceG extends JFrame implements ActionListener {
 			Grille1[i].setActionCommand("Grille1"+i);
 			Grille1[i].addActionListener(this);
 			PlateauxJ1.add(Grille1[i]);
+			
+			if (Option == 0) Grille1[i].setEnabled(false);
 
 		}
 		
@@ -149,6 +168,8 @@ public class interfaceG extends JFrame implements ActionListener {
 			Grille2[i].setActionCommand("Grille2"+i);
 			Grille2[i].addActionListener(this);
 			PlateauxJ2.add(Grille2[i]);
+			
+			if (Option == 0)Grille2[i].setEnabled(false);
 
 		}
 		
@@ -178,6 +199,7 @@ public class interfaceG extends JFrame implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		// TODO Auto-generated method stub
 		String RecuperationBouton = ((JButton) e.getSource()).getName() ;
 		String RecuperationActionBouton = ((JButton) e.getSource()).getActionCommand() ;
@@ -186,22 +208,67 @@ public class interfaceG extends JFrame implements ActionListener {
 		//teste si le bouton appuyer est BoutonStopRestart
 		if(RecuperationActionBouton==BoutonStopRestart.getActionCommand())
 		{
-
-			
+			setVisible(false);
+			new MenuGraphique();
+		}
+		
+		//teste si le bouton appuyer est BoutonStart
+		else if(RecuperationActionBouton == BoutonStart.getActionCommand()){
 			Flag = true;
-			ValeurResultatScore.setText("Le bouton Stop  est appuyé");
-			//remet toute les cases des tableaux a enable
-			for (int i=0; i<=99; i++)
+			
+			for(int i = 0; i <= 99; i++)
 			{
 				Grille1[i].setEnabled(true);
-			}
-			
-			for (int i=0; i<=99; i++)
-			{
 				Grille2[i].setEnabled(true);
 			}
 			
+			if (Option == 0){
+				Torpilleur.SetPosition(5);
+				Torpilleur.SetPosition(6);
+				
+				Sousmarin.SetPosition(30);
+				Sousmarin.SetPosition(40);
+				Sousmarin.SetPosition(50);
+				
+				ContreTorpilleur.SetPosition(35);
+				ContreTorpilleur.SetPosition(36);
+				ContreTorpilleur.SetPosition(37);
+				
+				Croiseur.SetPosition(76);
+				Croiseur.SetPosition(77);
+				Croiseur.SetPosition(78);
+				Croiseur.SetPosition(79);
+				
+				PorteAvion.SetPosition(8);
+				PorteAvion.SetPosition(18);
+				PorteAvion.SetPosition(38);
+				PorteAvion.SetPosition(48);
+				PorteAvion.SetPosition(58);
+				Torpilleur1.SetPosition(5);
+				Torpilleur1.SetPosition(6);
+				
+				Sousmarin1.SetPosition(30);
+				Sousmarin1.SetPosition(40);
+				Sousmarin1.SetPosition(50);
+				
+				ContreTorpilleur1.SetPosition(35);
+				ContreTorpilleur1.SetPosition(36);
+				ContreTorpilleur1.SetPosition(37);
+				
+				Croiseur1.SetPosition(76);
+				Croiseur1.SetPosition(77);
+				Croiseur1.SetPosition(78);
+				Croiseur1.SetPosition(79);
+				
+				PorteAvion1.SetPosition(8);
+				PorteAvion1.SetPosition(18);
+				PorteAvion1.SetPosition(38);
+				PorteAvion1.SetPosition(48);
+				PorteAvion1.SetPosition(58);
+			}
+			
 		}
+		
 		else
 		{
 			int NomBoutonAppuyer = Integer.parseInt(RecuperationBouton);
@@ -210,67 +277,128 @@ public class interfaceG extends JFrame implements ActionListener {
 			//teste si le bouton appuyer est une case
 			if(NomBoutonAppuyer<=199 && NomBoutonAppuyer>=0)
 			{
-
 				//test si le bouton appuyer fait partie du premier tableau
 				if(NomBoutonAppuyer<=99 && NomBoutonAppuyer>=0)
 				{
-					for (int i=0; i<=99; i++)
-					{
-						Grille1[i].setEnabled(false);
-					}
+					Cmpt++;
 					
-					for (int i=0; i<=99; i++)
-					{
-						Grille2[i].setEnabled(false);
+					if(!Flag){
+						for (int i=0; i<=99; i++)
+						{
+							Grille1[i].setEnabled(false);
+						}
+					
+						for (int i=0; i<=99; i++)
+						{
+							Grille2[i].setEnabled(false);
+						}
 					}
 					//gestion des debordement de tableaux
-					Grille1[NomBoutonAppuyer].setEnabled(true);
+					if ((Cmpt%2) == 1)
+					{
+						
+						for (int i=0; i<=99; i++)
+						{
+							Grille2[i].setEnabled(true);
+							Grille1[i].setEnabled(false);
+						}
+						if (Torpilleur1.testPosition(NomBoutonAppuyer + 100) == true){
+							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
+						}
+						if (Sousmarin1.testPosition(NomBoutonAppuyer + 100) == true){
+							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
+						}
+						if (ContreTorpilleur1.testPosition(NomBoutonAppuyer + 100) == true){
+							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
+						}
+						if (Croiseur1.testPosition(NomBoutonAppuyer + 100) == true){
+							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
+						}
+						if (PorteAvion1.testPosition(NomBoutonAppuyer + 100) == true){
+							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
+						}
+					}
 					
-					if((NomBoutonAppuyer-10)>=0)
-					Grille1[(NomBoutonAppuyer)-10].setEnabled(true);
+					if (Option != 0){
+						
+						Grille1[NomBoutonAppuyer].setEnabled(true);
+						
+						if((NomBoutonAppuyer-10)>=0)
+							Grille1[(NomBoutonAppuyer)-10].setEnabled(true);
 
 					
-					if((NomBoutonAppuyer+10)<=99)
-					Grille1[(NomBoutonAppuyer)+10].setEnabled(true);
+						if((NomBoutonAppuyer+10)<=99)
+							Grille1[(NomBoutonAppuyer)+10].setEnabled(true);
 
 					
-					if(((NomBoutonAppuyer+1)/10)-(NomBoutonAppuyer/10)==0)
-					Grille1[(NomBoutonAppuyer)+1].setEnabled(true);
+						if(((NomBoutonAppuyer+1)/10)-(NomBoutonAppuyer/10)==0)
+							Grille1[(NomBoutonAppuyer)+1].setEnabled(true);
 
 
-					if((NomBoutonAppuyer/10)-((NomBoutonAppuyer-1)/10)==0 && NomBoutonAppuyer != 0)
-					Grille1[(NomBoutonAppuyer)-1].setEnabled(true);
+						if((NomBoutonAppuyer/10)-((NomBoutonAppuyer-1)/10)==0 && NomBoutonAppuyer != 0)
+							Grille1[(NomBoutonAppuyer)-1].setEnabled(true);
+					}
 				}
 				else
 				{
 					//test si le bouton appuyer fait partie du deuxieme tableau
 					if(NomBoutonAppuyer<=199 && NomBoutonAppuyer>=100){
+						Cmpt++;
 						
-						for (int i=0; i<=99; i++)
-						{
-							Grille1[i].setEnabled(false);
-						}
+						if(!Flag){	
+							for (int i=0; i<=99; i++)
+							{
+								Grille1[i].setEnabled(false);
+							}
 						
-						for (int i=0; i<=99; i++)
-						{
-							Grille2[i].setEnabled(false);
+							for (int i=0; i<=99; i++)
+							{
+								Grille2[i].setEnabled(false);
+							}
 						}
 						//gestion des debordement de tableaux
-						Grille2[NomBoutonAppuyer-100].setEnabled(true);
+						if ((Cmpt%2) == 0)
+						{
+							for (int i=0; i<=99; i++)
+							{
+								Grille2[i].setEnabled(false);
+								Grille1[i].setEnabled(true);
+							}
+							if (Torpilleur.testPosition(NomBoutonAppuyer - 100) == true){
+								Grille2[NomBoutonAppuyer].setBackground(Color.GREEN);
+							}
+							if (Sousmarin.testPosition(NomBoutonAppuyer - 100) == true){
+								Grille2[NomBoutonAppuyer].setBackground(Color.GREEN);
+							}
+							if (ContreTorpilleur.testPosition(NomBoutonAppuyer - 100) == true){
+								Grille2[NomBoutonAppuyer].setBackground(Color.GREEN);
+							}
+							if (Croiseur.testPosition(NomBoutonAppuyer - 100) == true){
+								Grille2[NomBoutonAppuyer].setBackground(Color.GREEN);
+							}
+							if (PorteAvion.testPosition(NomBoutonAppuyer - 100) == true){
+								Grille2[NomBoutonAppuyer].setBackground(Color.GREEN);
+							}
+						}
 						
-						if(((NomBoutonAppuyer-100)-10)>=0)
-						Grille2[(NomBoutonAppuyer-100)-10].setEnabled(true);
+						if (Option != 0){
+							
+							Grille2[NomBoutonAppuyer].setEnabled(true);
+							
+							if(((NomBoutonAppuyer-100)-10)>=0)
+								Grille2[(NomBoutonAppuyer-100)-10].setEnabled(true);
 						
-						if((NomBoutonAppuyer-90)<=99)
-						Grille2[(NomBoutonAppuyer-100)+10].setEnabled(true);
+							if((NomBoutonAppuyer-90)<=99)
+								Grille2[(NomBoutonAppuyer-100)+10].setEnabled(true);
 
 						
-						if(((NomBoutonAppuyer-99)/10)-((NomBoutonAppuyer-100)/10)==0)
-						Grille2[(NomBoutonAppuyer-100)+1].setEnabled(true);
+							if(((NomBoutonAppuyer-99)/10)-((NomBoutonAppuyer-100)/10)==0)
+								Grille2[(NomBoutonAppuyer-100)+1].setEnabled(true);
 		
 
-						if(((NomBoutonAppuyer-100)/10)-((NomBoutonAppuyer-101)/10)==0 && NomBoutonAppuyer != 100)
-						Grille2[(NomBoutonAppuyer-100)-1].setEnabled(true);
+							if(((NomBoutonAppuyer-100)/10)-((NomBoutonAppuyer-101)/10)==0 && NomBoutonAppuyer != 100)
+								Grille2[(NomBoutonAppuyer-100)-1].setEnabled(true);
+						}
 					}
 				}
 			}
@@ -282,7 +410,7 @@ public class interfaceG extends JFrame implements ActionListener {
 
 	public static void main(String[] args){
 		
-		new interfaceG();
+		new interfaceG(0);
 		
 	}
 	

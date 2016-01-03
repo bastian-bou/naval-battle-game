@@ -7,6 +7,7 @@ public class MenuGraphique extends JFrame implements ActionListener{
 	
 	private JButton Quitter;
 	private JButton Local;
+	private JButton Auto;
 	private JButton LAN;
 	
 	
@@ -18,14 +19,18 @@ public class MenuGraphique extends JFrame implements ActionListener{
 		Local.setAlignmentX(Component.CENTER_ALIGNMENT);
 		LAN = new JButton("Démarrer une LAN");
 		LAN.setAlignmentX(Component.CENTER_ALIGNMENT);
+		Auto = new JButton("Démarrer partie avec placement automatique");
+		Auto.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		setLocationRelativeTo(null);
 		setTitle("Menu");
-		setSize(236, 130);
+		setSize(350, 145);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		BoxLayout boxLayout = new BoxLayout(getContentPane(), BoxLayout.Y_AXIS);
 		setLayout(boxLayout);
+		add(Auto);
+		Auto.addActionListener(this);
 		add(Local);
 		Local.addActionListener(this);
 		add(LAN);
@@ -45,11 +50,15 @@ public class MenuGraphique extends JFrame implements ActionListener{
 		
 		if(e.getSource() == Local){
 			setVisible(false);
-			new interfaceG();
+			new interfaceG(1);
+		}
+		if(e.getSource() == Auto){
+			setVisible(false);
+			new interfaceG(0);
 		}
 		
 		if(e.getSource() == LAN){
-			
+			LAN.setText("pour une version future (désolé)");
 		}
 	}
 }

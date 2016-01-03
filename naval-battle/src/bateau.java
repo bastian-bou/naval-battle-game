@@ -55,7 +55,7 @@ public abstract class bateau {
 		 * sinon retourne False
 		 */
 		for(int j=0; j < value; j++)
-			if (pos == tab[j]) return true;
+			if (pos == tab[j])return true;
 		return false;
 	}
 	
