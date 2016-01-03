@@ -36,7 +36,7 @@ public class interfaceG extends JFrame implements ActionListener {
 	private JLabel Vide3;
 	private JLabel Vide4;
 	
-	
+	private boolean Flag; //separation du placemnt des bateaux au jeu
 	
 	private static final long serialVersionUID = 1L;
 
@@ -47,6 +47,7 @@ public class interfaceG extends JFrame implements ActionListener {
 		//Appel du contructeur JFrame
 		super("Battleship");
 		
+		Flag = false;
 		
 		//Contruction des éléments pour l'interface joueur
 		InterfaceJoueur = new JPanel();
@@ -184,7 +185,7 @@ public class interfaceG extends JFrame implements ActionListener {
 		else
 		{
 			
-			
+			Flag = true;
 			for (int i=0; i<=99; i++)
 			{
 				Grille1[i].setEnabled(false);
