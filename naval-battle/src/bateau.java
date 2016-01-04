@@ -23,17 +23,16 @@ public abstract class bateau {
 	
 	//retourne la taille du bateau
 	public int getValue(){
-		value=2;
 		return value;
 	}
 	
 	//ajoute une touche au bateau et test si il est "touché" ou "coulé"
 	public boolean addTouch(){
-		nbTouche ++;
 		/*
 		 * retourne vrai (true) il est coulé
 		 * ou faux (false) si il est simplement touché
 		 */
+		nbTouche ++;
 		if (nbTouche == value) return true;
 		else return false;
 	}
@@ -47,19 +46,26 @@ public abstract class bateau {
 			tab[i] = pos;
 			i++;
 		}
+		if(i == value) i = 0;
+	}
+	
+	//retourne le tableau des differentes positions des cases du bateau
+	public int[] getPositions(){
+		return tab;
 	}
 	
 	public boolean testPosition(int pos){
 		/*
-		 * Test si la position correspond au bateau
+		 * Test si la position correspond au bateau et si il a deja ete touche au meme endroit
 		 * si OUI, retourne True
 		 * sinon retourne False
 		 */
-		for(int j=0; j < value; j++)
-			if (pos == tab[j])return true;
+		int cmpt = 0;
+		for(int j=0; j < value; j++){
+			if (pos == tab[j])cmpt++;
+		}
+		if(cmpt == 1)return true;
 		return false;
 	}
-	
-	
-	
+		
 }

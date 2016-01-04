@@ -290,7 +290,6 @@ public class interfaceG extends JFrame implements ActionListener {
 					//test si le bouton appuyer fait partie du deuxieme tableau
 					if(NomBoutonAppuyer<=199 && NomBoutonAppuyer>=100){
 						Cmpt++;
-						
 						if(!Flag){	
 							for (int i=0; i<=99; i++)
 							{
