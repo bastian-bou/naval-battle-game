@@ -213,9 +213,6 @@ public class interfaceG extends JFrame implements ActionListener {
 				Grille1[i].setEnabled(true);
 				Grille2[i].setEnabled(true);
 			}
-			
-			
-			
 		}
 		
 		else

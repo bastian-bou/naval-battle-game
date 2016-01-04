@@ -208,7 +208,7 @@ public class InterfaceGAuto extends JFrame implements ActionListener {
 			for(int i = 0; i <= 99; i++)
 			{
 				Grille1[i].setEnabled(true);
-				Grille2[i].setEnabled(true);
+				Grille2[i].setEnabled(false);
 			}
 			
 		
@@ -219,11 +219,11 @@ public class InterfaceGAuto extends JFrame implements ActionListener {
 				Croiseur = new Four("Croiseur");
 				PorteAvion = new Five("Porte-Avion");
 				
-				Torpilleur1 = new Two("Torpilleur");
-				Sousmarin1 = new Three("Sous-Marin");
-				ContreTorpilleur1 = new Three("Contre-Torpilleur");
-				Croiseur1 = new Four("Croiseur");
-				PorteAvion1 = new Five("Porte-Avion");
+				Torpilleur1 = new Two("TorpilleurG2");
+				Sousmarin1 = new Three("Sous-MarinG2");
+				ContreTorpilleur1 = new Three("Contre-TorpilleurG2");
+				Croiseur1 = new Four("CroiseurG2");
+				PorteAvion1 = new Five("Porte-AvionG2");
 				
 				Torpilleur.SetPosition(5);
 				Torpilleur.SetPosition(6);

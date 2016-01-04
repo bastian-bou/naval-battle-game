@@ -5,7 +5,7 @@ public abstract class bateau {
 	protected int value;		//taille du bateau
 	protected int nbTouche;	//nombre de touche sur le bateau
 	protected int tab[];
-	protected int i;
+	protected static int i;
 	
 	//constructeur 
 	public bateau(String n, int val){
@@ -13,6 +13,7 @@ public abstract class bateau {
 		value = val;
 		nbTouche = 0;
 		i = 0;
+		tab = new int[val];
 	}
 	
 	//retourne le nom du bateau (type)
