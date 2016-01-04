@@ -50,11 +50,11 @@ public class MenuGraphique extends JFrame implements ActionListener{
 		
 		if(e.getSource() == Local){
 			setVisible(false);
-			new interfaceG(1);
+			new interfaceG();
 		}
 		if(e.getSource() == Auto){
 			setVisible(false);
-			new interfaceG(0);
+			new InterfaceGAuto();
 		}
 		
 		if(e.getSource() == LAN){
