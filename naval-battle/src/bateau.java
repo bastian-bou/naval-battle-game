@@ -5,7 +5,9 @@ public abstract class bateau {
 	protected int value;		//taille du bateau
 	protected int nbTouche;	//nombre de touche sur le bateau
 	protected int tab[];
-	protected static int i;
+	protected int tabTest[];
+	protected static int i, j;
+	
 	
 	//constructeur 
 	public bateau(String n, int val){
@@ -13,7 +15,9 @@ public abstract class bateau {
 		value = val;
 		nbTouche = 0;
 		i = 0;
+		j = 0;
 		tab = new int[val];
+		tabTest = new int[val];
 	}
 	
 	//retourne le nom du bateau (type)
@@ -54,18 +58,27 @@ public abstract class bateau {
 		return tab;
 	}
 	
-	public boolean testPosition(int pos){
+	public int testPosition(int pos){
 		/*
 		 * Test si la position correspond au bateau et si il a deja ete touche au meme endroit
 		 * si OUI, retourne True
 		 * sinon retourne False
 		 */
-		int cmpt = 0;
 		for(int j=0; j < value; j++){
-			if (pos == tab[j])cmpt++;
+			if (pos == tab[j]){
+				for(int a = 0; a < value; a++){
+					if (pos == tabTest[a]){ 
+						j--;
+						return 0;
+					}
+				}
+				tabTest[j] = pos;
+				j++;
+				return 2;
+			}
 		}
-		if(cmpt == 1)return true;
-		return false;
+		return 1;
+		
 	}
 		
 }

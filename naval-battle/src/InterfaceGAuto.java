@@ -291,7 +291,7 @@ public class InterfaceGAuto extends JFrame implements ActionListener {
 							Grille2[i].setEnabled(true);
 							Grille1[i].setEnabled(false);
 						}
-						if (Torpilleur1.testPosition(NomBoutonAppuyer + 100) == true){
+						if (Torpilleur1.testPosition(NomBoutonAppuyer + 100) > 1){
 							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
 							if (Torpilleur1.addTouch()){
 								tabl = new int[Torpilleur1.getValue()];
@@ -299,7 +299,7 @@ public class InterfaceGAuto extends JFrame implements ActionListener {
 								bool = true;
 							}
 						}
-						else if (Sousmarin1.testPosition(NomBoutonAppuyer + 100) == true){
+						else if (Sousmarin1.testPosition(NomBoutonAppuyer + 100) > 1){
 							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
 							if (Sousmarin1.addTouch()){
 								tabl = new int[Sousmarin1.getValue()];
@@ -307,7 +307,7 @@ public class InterfaceGAuto extends JFrame implements ActionListener {
 								bool = true;
 							}
 						}
-						else if (ContreTorpilleur1.testPosition(NomBoutonAppuyer + 100) == true){
+						else if (ContreTorpilleur1.testPosition(NomBoutonAppuyer + 100) > 1){
 							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
 							if (ContreTorpilleur1.addTouch()){
 								tabl = new int[ContreTorpilleur1.getValue()];
@@ -315,7 +315,7 @@ public class InterfaceGAuto extends JFrame implements ActionListener {
 								bool = true;
 							}
 						}
-						else if (Croiseur1.testPosition(NomBoutonAppuyer + 100) == true){
+						else if (Croiseur1.testPosition(NomBoutonAppuyer + 100) > 1){
 							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
 							if (Croiseur1.addTouch()){
 								tabl = new int[Croiseur1.getValue()];
@@ -323,7 +323,7 @@ public class InterfaceGAuto extends JFrame implements ActionListener {
 								bool = true;
 							}
 						}
-						else if (PorteAvion1.testPosition(NomBoutonAppuyer + 100) == true){
+						else if (PorteAvion1.testPosition(NomBoutonAppuyer + 100) > 1){
 							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
 							if (PorteAvion1.addTouch()){
 								tabl = new int[PorteAvion1.getValue()];
@@ -356,19 +356,19 @@ public class InterfaceGAuto extends JFrame implements ActionListener {
 								Grille2[i].setEnabled(false);
 								Grille1[i].setEnabled(true);
 							}
-							if (Torpilleur.testPosition(NomBoutonAppuyer - 100) == true){
+							if (Torpilleur.testPosition(NomBoutonAppuyer - 100) > 1){
 								Grille2[NomBoutonAppuyer - 100].setBackground(Color.GREEN);
 							}
-							else if (Sousmarin.testPosition(NomBoutonAppuyer - 100) == true){
+							else if (Sousmarin.testPosition(NomBoutonAppuyer - 100) > 1){
 								Grille2[NomBoutonAppuyer - 100].setBackground(Color.GREEN);
 							}
-							else if (ContreTorpilleur.testPosition(NomBoutonAppuyer - 100) == true){
+							else if (ContreTorpilleur.testPosition(NomBoutonAppuyer - 100) > 1){
 								Grille2[NomBoutonAppuyer - 100].setBackground(Color.GREEN);
 							}
-							else if (Croiseur.testPosition(NomBoutonAppuyer - 100) == true){
+							else if (Croiseur.testPosition(NomBoutonAppuyer - 100) > 1){
 								Grille2[NomBoutonAppuyer - 100].setBackground(Color.GREEN);
 							}
-							else if (PorteAvion.testPosition(NomBoutonAppuyer - 100) == true){
+							else if (PorteAvion.testPosition(NomBoutonAppuyer - 100) > 1){
 								Grille2[NomBoutonAppuyer - 100].setBackground(Color.GREEN);
 							}
 							else Grille2[NomBoutonAppuyer - 100].setBackground(Color.WHITE);

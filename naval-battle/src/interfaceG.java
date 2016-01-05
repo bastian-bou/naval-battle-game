@@ -248,19 +248,19 @@ public class interfaceG extends JFrame implements ActionListener {
 							Grille2[i].setEnabled(true);
 							Grille1[i].setEnabled(false);
 						}
-						if (Torpilleur1.testPosition(NomBoutonAppuyer + 100) == true){
+						if (Torpilleur1.testPosition(NomBoutonAppuyer + 100) > 1){
 							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
 						}
-						if (Sousmarin1.testPosition(NomBoutonAppuyer + 100) == true){
+						if (Sousmarin1.testPosition(NomBoutonAppuyer + 100) > 1){
 							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
 						}
-						if (ContreTorpilleur1.testPosition(NomBoutonAppuyer + 100) == true){
+						if (ContreTorpilleur1.testPosition(NomBoutonAppuyer + 100) > 1){
 							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
 						}
-						if (Croiseur1.testPosition(NomBoutonAppuyer + 100) == true){
+						if (Croiseur1.testPosition(NomBoutonAppuyer + 100) > 1){
 							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
 						}
-						if (PorteAvion1.testPosition(NomBoutonAppuyer + 100) == true){
+						if (PorteAvion1.testPosition(NomBoutonAppuyer + 100) > 1){
 							Grille1[NomBoutonAppuyer].setBackground(Color.GREEN);
 						}
 					}
@@ -309,19 +309,19 @@ public class interfaceG extends JFrame implements ActionListener {
 								Grille2[i].setEnabled(false);
 								Grille1[i].setEnabled(true);
 							}
-							if (Torpilleur.testPosition(NomBoutonAppuyer - 100) == true){
+							if (Torpilleur.testPosition(NomBoutonAppuyer - 100) > 1){
 								Grille2[NomBoutonAppuyer].setBackground(Color.GREEN);
 							}
-							if (Sousmarin.testPosition(NomBoutonAppuyer - 100) == true){
+							if (Sousmarin.testPosition(NomBoutonAppuyer - 100) > 1){
 								Grille2[NomBoutonAppuyer].setBackground(Color.GREEN);
 							}
-							if (ContreTorpilleur.testPosition(NomBoutonAppuyer - 100) == true){
+							if (ContreTorpilleur.testPosition(NomBoutonAppuyer - 100) > 1){
 								Grille2[NomBoutonAppuyer].setBackground(Color.GREEN);
 							}
-							if (Croiseur.testPosition(NomBoutonAppuyer - 100) == true){
+							if (Croiseur.testPosition(NomBoutonAppuyer - 100) > 1){
 								Grille2[NomBoutonAppuyer].setBackground(Color.GREEN);
 							}
-							if (PorteAvion.testPosition(NomBoutonAppuyer - 100) == true){
+							if (PorteAvion.testPosition(NomBoutonAppuyer - 100) > 1){
 								Grille2[NomBoutonAppuyer].setBackground(Color.GREEN);
 							}
 						}
